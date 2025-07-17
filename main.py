@@ -68,28 +68,50 @@ for i, element in enumerate(elements):
         angle = np.radians(angle)
         all_elements.append(Sprite(element, x, y, speed, angle))
 
+counts = {
+   "rock": amounts,
+   "scissors": amounts,
+   "paper": amounts
+}
+final_winner = ""
 while running:
-  for event in pygame.event.get():
-    if event.type == pygame.QUIT:
-      running = False
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
 
-  dt = clock.tick(60) / 1000.0
-  screen.fill((0,0,0))
-  for i, element in enumerate(all_elements):
-     # need to handle collisions here
-     for j, element2 in enumerate(all_elements):
-        if i == j: continue
-        if element.rect.colliderect(element2.rect):
-           # see which one blah
-           # print(f"element {i} collides with {j}")
-           if element.type == element2.type: continue
-           if win_map[element.type] == element2.type:  
-              # element 1 wins
-              element2.update_type(element.type)
-           else:
-              # element 2 wins
-              element.update_type(element2.type)
-     element.update_pos(dt)
-     screen.blit(element.image, element.rect)
-  pygame.display.flip()
+    dt = clock.tick(60) / 1000.0
+    screen.fill((0,0,0))
+    for i, element in enumerate(all_elements):
+        # need to handle collisions here
+        winner = ""
+        loser = ""
+        # holy nesting~
+        for j, element2 in enumerate(all_elements):
+            if i == j: continue
+            if element.rect.colliderect(element2.rect):
+                if element.type == element2.type: continue
+                if win_map[element.type] == element2.type:  
+                    # element 1 wins
+                    winner = element.type
+                    loser = element2.type
+                    element2.update_type(element.type)
+                else:
+                    # element 2 wins
+                    winner = element2.type
+                    loser = element.type
+                    element.update_type(element2.type)
+                    
+                
+                counts[winner] = counts[winner] + 1
+                counts[loser] = counts[loser] - 1
+                final_winner = winner
+
+        element.update_pos(dt)
+        screen.blit(element.image, element.rect)
+        
+    if counts["rock"] == 3* amounts or counts["paper"] == 3*amounts or counts["scissors"] == 3*amounts:
+        print(f"{final_winner} won.")
+        running = False
+        
+    pygame.display.flip()
   
