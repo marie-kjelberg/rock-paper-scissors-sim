@@ -51,8 +51,6 @@ class Sprite:
 
         self.rect.x += self.v * np.cos(self.angle) * dt
         self.rect.y += self.v * np.sin(self.angle) * dt
-    
-
 
 screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption('Rock paper scissors thing')
@@ -62,14 +60,14 @@ running = True
 clock = pygame.time.Clock()
 
 elements = ["rock", "paper", "scissors"]
-spawn_areas = [[0,0], [width-100, height-100], [width-100, 0]]
-# fiks riktig startangles todo ig
 for i, element in enumerate(elements):
     for k in range(amounts):
-        spawn_area = spawn_areas[i]
-        x = spawn_area[0] + random.uniform(0, 50)
-        y = spawn_area[1] + random.uniform(0, 50) 
-        all_elements.append(Sprite(element, x, y, speed, random.uniform(-np.radians(-45), np.radians(45))))
+        x = random.randrange(0, width-img_dimensions[0])
+        y = random.randrange(0, height-img_dimensions[1])
+        angle = random.randrange(-180, 180)
+        angle = np.radians(angle)
+        all_elements.append(Sprite(element, x, y, speed, angle))
+
 while running:
   for event in pygame.event.get():
     if event.type == pygame.QUIT:
