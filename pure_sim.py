@@ -4,7 +4,7 @@ import random
 import multiprocessing
 import matplotlib.pyplot as plt
 from collections import Counter
-TIMES = 10_000_000
+TIMES = 100_000
 FPS = 60
 dt = 1/FPS
 win_map = {
@@ -103,16 +103,26 @@ if __name__ == "__main__":
     with multiprocessing.Pool(processes=multiprocessing.cpu_count() - 1) as pool:
         results = pool.map(run_sim, range(TIMES))
         print(results)
-        print(time.time() - start)
+        dur = time.time() - start
+        print(dur)
         with open(f"output{TIMES}.txt", "w") as file:
+            file.write(f"{dur}\n")
             for result in results:
                 file.write(str(result) + "\n")
-        counts = Counter(results)
 
+        counts = Counter(results)
         labels = list(counts.keys())
         values = list(counts.values())
-        plt.bar(labels, values, color=['gray', 'blue', 'red'])
-        plt.title("Abundance of Rock, Paper, Scissors")
-        plt.xlabel("Choice")
+        colour_map = {
+            "rock": "gray",
+            "paper": "blue",
+            "scissors": "red"
+        }
+        colours = [colour_map[label] for label in labels]
+        
+        plt.bar(labels, values, color=colours)
+        plt.title(f"Abundance of Rock, Paper, Scissors: {dur}s")
+        plt.xlabel("Winners")
         plt.ylabel("Count")
+        plt.savefig(f"./{TIMES}.png")
         plt.show()
