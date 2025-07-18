@@ -1,12 +1,5 @@
 # rock-paper-scissor-sim
 I was curious to see if one item was better in this simulation game. 
 
-Todo: 
-- Make it be able to simulate everything without rendering it (at ~60fps, but random spawnpoints)
-- Collect data 
-- Run it at least 100k times
-
-## How to simulate without rendering it: (probably)
-I imagine I could just update the positions (with the same frequency), but just not render it. Right now I use the inbuilt collision system, but in I will need to change this and make my own algorithm. After this, I imagine I could possibly run these in parallel to achieve 100k runs faster.  
-
-I want to try to find more efficent ways of modeling this. Matrix representation would be the ultimate form of this, but I am terrible at linear algebra. 
+## Findings
+I ran this experiment first 100k times, and then a million. In both cases, rock appears to have won every so slightly more than paper or scissors. However, the discrepancy seems to have lessened over a higher simulation count. Therefore, I think it would be reasonable to expect this trend to continue. I will run this for a further 10 million times, (roughly equivalent to 10 hours runtime for my computer) and check the results then.

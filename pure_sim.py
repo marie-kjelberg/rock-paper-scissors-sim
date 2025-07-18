@@ -4,6 +4,7 @@ import random
 import multiprocessing
 import matplotlib.pyplot as plt
 from collections import Counter
+TIMES = 10_000_000
 FPS = 60
 dt = 1/FPS
 win_map = {
@@ -100,10 +101,10 @@ def run_sim(e):
 
 if __name__ == "__main__":
     with multiprocessing.Pool(processes=multiprocessing.cpu_count() - 1) as pool:
-        results = pool.map(run_sim, range(50))
+        results = pool.map(run_sim, range(TIMES))
         print(results)
         print(time.time() - start)
-        with open("output.txt", "w") as file:
+        with open(f"output{TIMES}.txt", "w") as file:
             for result in results:
                 file.write(str(result) + "\n")
         counts = Counter(results)
