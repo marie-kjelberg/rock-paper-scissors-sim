@@ -23,4 +23,4 @@ These results would indicate that the null hypothesis is untrue, given the tiny 
 
 ## Future Curiosities: 
 
-I wonder if changing the ``amounts`` variable does anything to change the results? Probably not, but it is something I want to test at another point. I also wonder if the odds change based on the canvas size. Having said all of that, Computing that for ~10 hours does not sound fun in this blazing summer.  
+I wonder if changing the ``amounts`` variable does anything to change the results? Probably not, but it is something I want to test at another point. I also wonder if the odds change based on the canvas size. Having said all of that, Computing that for ~10 hours does not sound fun in this blazing summer ¯\_(ツ)_/¯
