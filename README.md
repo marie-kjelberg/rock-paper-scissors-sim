@@ -1,5 +1,6 @@
 # rock-paper-scissor-sim
 Have you ever wondered if rock, paper or scissors was better in the rock, paper scissors simulation game? No? Well I have, and this is what I will try to answer here. 
+
 ![sooo low fps lmao](game.gif)
 
 ## Game simulation premise
