@@ -1,6 +1,6 @@
 # rock-paper-scissor-sim
 Have you ever wondered if rock, paper or scissors was better in the rock, paper scissors simulation game? No? Well I have, and this is what I will try to answer here. 
-![this soooo low fps](https://raw.githubusercontent.com/marie-kjelberg/rock-paper-scissors/main/game.gif)
+![sooo low fps lmao](game.gif)
 
 ## Game simulation premise
 An equal amount of rock, paper and scissor items spawn randomly around the canvas. If one touches another and that item beats the other, then the other item gets converted into the first item's type. The game continues like this until only either rock, paper or scissors remain. 
@@ -11,7 +11,7 @@ I assumed the null hypothesis to be true when working on this. Ie. that rock, pa
 
 ## Results & Findings
 I ran this simulation a total of 11'100'000 times. After analyzing the data, this are the results:
-![Screenshot of results](https://raw.githubusercontent.com/marie-kjelberg/rock-paper-scissors/main/chisquare_finder_21072025.png)
+![Screenshot of results](chisquare_finder_21072025.png)
 - Total entries: 11'100'000
 - Expected results: rock=3700000, paper=3700000, scissors=3700000
 - Observed results: rock=3720975, paper=3683973, scissors=3695052
