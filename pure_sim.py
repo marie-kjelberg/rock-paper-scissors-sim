@@ -4,7 +4,7 @@ import random
 import multiprocessing
 import matplotlib.pyplot as plt
 from collections import Counter
-TIMES = 10_000_000
+TIMES = 1_000_000
 FPS = 60
 dt = 1/FPS
 win_map = {
